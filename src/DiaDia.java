@@ -13,7 +13,7 @@ import java.util.Scanner;
  *          
  * @version base
  */
-
+//ciao//
 public class DiaDia {
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
