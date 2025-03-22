@@ -12,8 +12,6 @@
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
-
 	private boolean finita;
 	public Labirinto labirinto;
 	public Giocatore giocatore;
@@ -27,6 +25,7 @@ public class Partita {
 	public Labirinto getLabirinto() {
 		return this.labirinto;
 	}
+	
 	public Giocatore getGiocatore() {
 		return this.giocatore;
 	}
