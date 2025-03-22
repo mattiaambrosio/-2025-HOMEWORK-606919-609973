@@ -93,15 +93,15 @@ public class DiaDia {
 		}
 
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			this.partita.labirinto.setStanzaCorrente(prossimaStanza);
+			int cfu = this.partita.giocatore.getCfu();
+			this.partita.giocatore.setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println(partita.labirinto.getStanzaCorrente().getDescrizione());
 	}
 
 	/**
