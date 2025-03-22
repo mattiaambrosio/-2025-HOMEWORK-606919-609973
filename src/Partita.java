@@ -14,7 +14,7 @@ public class Partita {
 
 	static final private int CFU_INIZIALI = 20;
 	
-	private Labirinto labirinto;
+	Labirinto labirinto = new Labirinto();
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
 	private boolean finita;
