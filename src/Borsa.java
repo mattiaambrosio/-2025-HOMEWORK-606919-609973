@@ -48,7 +48,23 @@ public class Borsa {
 	}
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
-		// ---> TODO (implementare questo metodo) <---
+		if(numeroAttrezzi==0) {
+			System.out.println("La tua borsa è vuota...");
+		}
+		else {		
+			for(int i=0;i<numeroAttrezzi;i++) {
+				if(this.attrezzi[i].equals(nomeAttrezzo)) {
+					for(int j=i; j<this.numeroAttrezzi; j++) {
+						this.attrezzi[j] = this.attrezzi[j+1];
+						this.numeroAttrezzi--;
+					}
+				}
+				else {
+					System.out.println("Nella borsa non c'è questo attrezzo!!!");
+				}
+				this.getPeso();
+			}
+		}
 		return a;
 	}
 	public String toString() {

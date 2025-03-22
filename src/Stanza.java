@@ -175,14 +175,15 @@ public class Stanza {
 		else {
 			for(int i=0; i<this.numeroAttrezzi; i++) {
 				if(this.attrezzi[i].equals(attrezzo)) {
-					for(int j=0; j<this.numeroAttrezzi; j++) {
+					for(int j=i; j<this.numeroAttrezzi; j++) {
 						this.attrezzi[j] = this.attrezzi[j+1];
 						this.numeroAttrezzi --;
 						return true;
 					}
-
 				}
-
+				else {
+					System.out.println("Non c'è questo attrezzo qui,cerca altrove..");
+				}
 			}
 		}
 		return false;
