@@ -177,14 +177,13 @@ public class Stanza {
 				if(this.attrezzi[i].equals(attrezzo)) {
 					for(int j=i; j<this.numeroAttrezzi; j++) {
 						this.attrezzi[j] = this.attrezzi[j+1];
-						this.numeroAttrezzi --;
 						return true;
 					}
+					this.numeroAttrezzi --;
 				}
-				else {
-					System.out.println("Non c'è questo attrezzo qui,cerca altrove..");
-				}
+
 			}
+			System.out.println("Non c'è questo attrezzo qui,cerca altrove..");
 		}
 		return false;
 	}

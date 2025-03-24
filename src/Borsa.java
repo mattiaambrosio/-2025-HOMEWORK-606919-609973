@@ -56,15 +56,13 @@ public class Borsa {
 				if(this.attrezzi[i].equals(nomeAttrezzo)) {
 					for(int j=i; j<this.numeroAttrezzi; j++) {
 						this.attrezzi[j] = this.attrezzi[j+1];
-						this.numeroAttrezzi--;
 					}
-				}
-				else {
-					System.out.println("Nella borsa non c'è questo attrezzo!!!");
+					this.numeroAttrezzi--;
 				}
 				this.getPeso();
 			}
 		}
+		System.out.println("Non hai questo oggetto nella borsa...");
 		return a;
 	}
 	public String toString() {
