@@ -168,15 +168,16 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		if(this.numeroAttrezzi!=0) {
-			return false;
+	public boolean removeAttrezzo(String nomeAttrezzo) {
+		if(this.numeroAttrezzi==0) {
+			System.out.println("Non ci sono attrezzi in questa stanza!");
 		}
 		else {
 			for(int i=0; i<this.NUMERO_MASSIMO_ATTREZZI; i++) {
-				if(this.attrezzi[i].toString().equals(attrezzo.toString())) {
+				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 					this.attrezzi[i]=null;
 					this.numeroAttrezzi--;
+					System.out.println("Oggetto preso!");
 					return true;
 				}
 			}

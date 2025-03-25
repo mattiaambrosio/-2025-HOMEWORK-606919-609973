@@ -91,6 +91,7 @@ public class DiaDia {
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
 		else {
+			this.partita.labirinto.stanzaCorrente.removeAttrezzo(nomeAttrezzo);
 			
 		}
 	}
