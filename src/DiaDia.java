@@ -87,7 +87,7 @@ public class DiaDia {
 	private void prendi(String nomeAttrezzo) {
 		Scanner scannernomeAttrezzo = new Scanner(System.in);
 		if(nomeAttrezzo==null) {
-			System.out.println("Dove vuoi andare ?");
+			System.out.println("Quale oggetto vuoi prendere?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
 		else {
@@ -98,8 +98,11 @@ public class DiaDia {
 	private void posa(String nomeAttrezzo) {
 		Scanner scannernomeAttrezzo = new Scanner(System.in);
 		if(nomeAttrezzo==null) {
-			System.out.println("quale oggetto vuoi prendere ?");
+			System.out.println("Quale oggetto vuoi posare?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
+		}
+		else {
+			this.partita.giocatore.getBorsa().removeAttrezzo(nomeAttrezzo);
 		}
 	}//tocca finire qui.. preche devo attivare le varie funioni e poi tocca pure, fare POSA
 		/**

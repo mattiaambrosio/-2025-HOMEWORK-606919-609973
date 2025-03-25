@@ -2,7 +2,7 @@
 public class Giocatore {
 	static final private int CFU_INIZIALI = 20;
 	private int cfu;
-	private Borsa borsa;
+	public Borsa borsa;
 	
 	
 	public Giocatore() {

@@ -54,7 +54,7 @@ public class Borsa {
 		}
 		else {
 			for(int i=0; i<this.attrezzi.length; i++) {
-				if(this.attrezzi[i].toString().equals(nomeAttrezzo)) {
+				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 					a = this.attrezzi[i];
 					this.attrezzi[i]=null;
 					this.numeroAttrezzi--;
@@ -65,7 +65,7 @@ public class Borsa {
 		}
 		System.out.println("Non hai questo attrezzo in borsa...");
 		return a;
-		
+
 	}
 	public String toString() {
 		StringBuilder s = new StringBuilder();
