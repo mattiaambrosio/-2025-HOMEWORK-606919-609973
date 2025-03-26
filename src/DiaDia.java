@@ -90,10 +90,13 @@ public class DiaDia {
 			System.out.println("Quale oggetto vuoi prendere?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
-		else {
-			this.partita.labirinto.stanzaCorrente.removeAttrezzo(nomeAttrezzo);
-			
+		Attrezzo attrezzo = this.partita.labirinto.stanzaCorrente.getAttrezzo(nomeAttrezzo);
+		this.partita.labirinto.stanzaCorrente.removeAttrezzo(nomeAttrezzo);
+		if(attrezzo!=null) {
+			this.partita.giocatore.borsa.addAttrezzo(attrezzo);
 		}
+
+
 	}
 	private void posa(String nomeAttrezzo) {
 		Scanner scannernomeAttrezzo = new Scanner(System.in);
@@ -101,41 +104,39 @@ public class DiaDia {
 			System.out.println("Quale oggetto vuoi posare?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
-		else {
-			this.partita.giocatore.getBorsa().removeAttrezzo(nomeAttrezzo);
-		}
+		this.partita.giocatore.borsa.removeAttrezzo(nomeAttrezzo);
 	}//tocca finire qui.. preche devo attivare le varie funioni e poi tocca pure, fare POSA
-		/**
-		 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-		 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-		 */
-		private void vai(String direzione) {
-			Scanner scannerDirezione = new Scanner(System.in);
-			if(direzione==null) {
-				System.out.println("Dove vuoi andare ?");
-				direzione = scannerDirezione.nextLine();
-			}
-			Stanza prossimaStanza = null;
-			prossimaStanza = this.partita.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
-			if (prossimaStanza == null)
-				System.out.println("Direzione inesistente");
-			else {
-				this.partita.labirinto.setStanzaCorrente(prossimaStanza);
-				int cfu = this.partita.giocatore.getCfu();
-				this.partita.giocatore.setCfu(cfu--);
-			}
-			System.out.println(partita.labirinto.getStanzaCorrente().getDescrizione());
+	/**
+	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
+	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
+	 */
+	private void vai(String direzione) {
+		Scanner scannerDirezione = new Scanner(System.in);
+		if(direzione==null) {
+			System.out.println("Dove vuoi andare ?");
+			direzione = scannerDirezione.nextLine();
 		}
-
-		/**
-		 * Comando "Fine".
-		 */
-		private void fine() {
-			System.out.println("Grazie di aver giocato!");  // si desidera smettere
+		Stanza prossimaStanza = null;
+		prossimaStanza = this.partita.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
+		if (prossimaStanza == null)
+			System.out.println("Direzione inesistente");
+		else {
+			this.partita.labirinto.setStanzaCorrente(prossimaStanza);
+			int cfu = this.partita.giocatore.getCfu();
+			this.partita.giocatore.setCfu(cfu--);
 		}
-
-		public static void main(String[] argc) {
-			DiaDia gioco = new DiaDia();
-			gioco.gioca();
-		}
+		System.out.println(partita.labirinto.getStanzaCorrente().getDescrizione());
 	}
+
+	/**
+	 * Comando "Fine".
+	 */
+	private void fine() {
+		System.out.println("Grazie di aver giocato!");  // si desidera smettere
+	}
+
+	public static void main(String[] argc) {
+		DiaDia gioco = new DiaDia();
+		gioco.gioca();
+	}
+}
