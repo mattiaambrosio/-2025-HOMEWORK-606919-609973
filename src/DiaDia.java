@@ -104,7 +104,12 @@ public class DiaDia {
 			System.out.println("Quale oggetto vuoi posare?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
+		Attrezzo attrezzo = this.partita.giocatore.borsa.getAttrezzo(nomeAttrezzo);
 		this.partita.giocatore.borsa.removeAttrezzo(nomeAttrezzo);
+		if(attrezzo!=null) {
+			this.partita.labirinto.stanzaCorrente.addAttrezzo(attrezzo);
+		}
+		
 	}//tocca finire qui.. preche devo attivare le varie funioni e poi tocca pure, fare POSA
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 

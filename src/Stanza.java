@@ -105,9 +105,11 @@ public class Stanza {
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
 			this.attrezzi[numeroAttrezzi] = attrezzo;
 			this.numeroAttrezzi++;
+			System.out.println("Attrezzo posato!");
 			return true;
 		}
 		else {
+			System.out.println("Non c'è spazio nella stanza!");
 			return false;
 		}
 	}

@@ -58,7 +58,6 @@ public class Borsa {
 					a = this.attrezzi[i];
 					this.attrezzi[i]=null;
 					this.numeroAttrezzi--;
-					System.out.println("Ho rimosso l'attrezzo "+a.toString());
 					return a;
 				}
 			}
