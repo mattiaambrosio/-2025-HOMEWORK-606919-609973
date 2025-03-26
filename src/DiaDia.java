@@ -65,6 +65,8 @@ public class DiaDia {
 			this.prendi(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
+		else if(comandoDaEseguire.getNome().equals("borsa"))
+			this.partita.giocatore.borsa.vediBorsa();
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {

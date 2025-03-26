@@ -27,8 +27,10 @@ public class Borsa {
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
-			if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
-				a = attrezzi[i];
+			if(this.attrezzi[i]!=null) {
+				if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
+					a = attrezzi[i];
+			}
 
 		return a;
 	}
@@ -36,7 +38,9 @@ public class Borsa {
 	public int getPeso() {
 		int peso = 0;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
-			peso += this.attrezzi[i].getPeso();
+			if(this.attrezzi[i]!=null) {
+				peso += this.attrezzi[i].getPeso();
+			}
 
 		return peso;
 	}
@@ -54,11 +58,13 @@ public class Borsa {
 		}
 		else {
 			for(int i=0; i<this.attrezzi.length; i++) {
-				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
-					a = this.attrezzi[i];
-					this.attrezzi[i]=null;
-					this.numeroAttrezzi--;
-					return a;
+				if(this.attrezzi[i]!=null) {
+					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
+						a = this.attrezzi[i];
+						this.attrezzi[i]=null;
+						this.numeroAttrezzi--;
+						return a;
+					}
 				}
 			}
 		}
@@ -77,6 +83,19 @@ public class Borsa {
 		else
 			s.append("Borsa vuota");
 		return s.toString();
+	}
+
+	public void vediBorsa() {
+		if(!this.isEmpty()) {
+			for(int i=0; i<this.numeroAttrezzi; i++) {
+				if(this.attrezzi[i]!=null) {
+					System.out.println(this.attrezzi[i].toString());
+				}
+				else System.out.println();
+			}
+		}
+		else
+			System.out.println("Borsa vuota!");
 	}
 
 }
