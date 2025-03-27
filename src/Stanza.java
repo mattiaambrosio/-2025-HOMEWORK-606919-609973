@@ -183,7 +183,7 @@ public class Stanza {
 					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 						this.attrezzi[i]=null;
 						this.numeroAttrezzi--;
-						System.out.println("Oggetto preso!");
+						System.out.println("Attrezzo preso!");
 						return true;
 					}
 				}

@@ -95,7 +95,6 @@ public class Borsa {
 				if(this.attrezzi[i]!=null) {
 					System.out.println(this.attrezzi[i].toString());
 				}
-				else System.out.println();
 			}
 		}
 		else

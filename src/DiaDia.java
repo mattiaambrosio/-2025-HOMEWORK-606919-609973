@@ -26,7 +26,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","borsa"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "borsa"};
 
 	private Partita partita;
 
@@ -66,7 +66,7 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
 		else if(comandoDaEseguire.getNome().equals("borsa"))
-			this.partita.giocatore.borsa.vediBorsa();
+			this.partita.getGiocatore().getBorsa().vediBorsa();
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -89,13 +89,13 @@ public class DiaDia {
 	private void prendi(String nomeAttrezzo) {
 		Scanner scannernomeAttrezzo = new Scanner(System.in);
 		if(nomeAttrezzo==null) {
-			System.out.println("Quale oggetto vuoi prendere?");
+			System.out.println("Quale attrezzo vuoi prendere?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
-		Attrezzo attrezzo = this.partita.labirinto.stanzaCorrente.getAttrezzo(nomeAttrezzo);
-		this.partita.labirinto.stanzaCorrente.removeAttrezzo(nomeAttrezzo);
+		Attrezzo attrezzo = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(nomeAttrezzo);
 		if(attrezzo!=null) {
-			this.partita.giocatore.borsa.addAttrezzo(attrezzo);
+			this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
 		}
 
 
@@ -103,13 +103,13 @@ public class DiaDia {
 	private void posa(String nomeAttrezzo) {
 		Scanner scannernomeAttrezzo = new Scanner(System.in);
 		if(nomeAttrezzo==null) {
-			System.out.println("Quale oggetto vuoi posare?");
+			System.out.println("Quale attrezzo vuoi posare?");
 			nomeAttrezzo = scannernomeAttrezzo.nextLine();
 		}
-		Attrezzo attrezzo = this.partita.giocatore.borsa.getAttrezzo(nomeAttrezzo);
-		this.partita.giocatore.borsa.removeAttrezzo(nomeAttrezzo);
+		Attrezzo attrezzo = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+		this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
 		if(attrezzo!=null) {
-			this.partita.labirinto.stanzaCorrente.addAttrezzo(attrezzo);
+			this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
 		}
 		
 	}
@@ -120,15 +120,15 @@ public class DiaDia {
 			direzione = scannerDirezione.nextLine();
 		}
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.labirinto.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.giocatore.getCfu();
-			this.partita.giocatore.setCfu(cfu--);
+			this.partita.getLabirinto().setStanzaCorrente(prossimaStanza);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu--);
 		}
-		System.out.println(partita.labirinto.getStanzaCorrente().getDescrizione());
+		System.out.println(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 	}
 
 	/**
