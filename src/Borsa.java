@@ -52,6 +52,7 @@ public class Borsa {
 	}
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
+		int x = numeroAttrezzi;
 		if(this.numeroAttrezzi==0) {
 			System.out.println("Non hai attrezzi in borsa...");
 			return null;
@@ -62,16 +63,19 @@ public class Borsa {
 					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 						a = this.attrezzi[i];
 						this.attrezzi[i]=null;
-						this.numeroAttrezzi--;
-						return a;
 					}
 				}
 			}
+			this.numeroAttrezzi--;
 		}
-		System.out.println("Non hai questo attrezzo in borsa...");
+		if(numeroAttrezzi==x) {
+			System.out.println("Non hai questo attrezzo in borsa...");
+			return a;
+		}
 		return a;
-
 	}
+	
+	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 
@@ -86,7 +90,7 @@ public class Borsa {
 	}
 
 	public void vediBorsa() {
-		if(!this.isEmpty()) {
+		if(!isEmpty()) {
 			for(int i=0; i<this.numeroAttrezzi; i++) {
 				if(this.attrezzi[i]!=null) {
 					System.out.println(this.attrezzi[i].toString());

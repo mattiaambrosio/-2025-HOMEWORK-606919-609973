@@ -26,7 +26,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","borsa"};
 
 	private Partita partita;
 
@@ -112,11 +112,7 @@ public class DiaDia {
 			this.partita.labirinto.stanzaCorrente.addAttrezzo(attrezzo);
 		}
 		
-	}//tocca finire qui.. preche devo attivare le varie funioni e poi tocca pure, fare POSA
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-	 */
+	}
 	private void vai(String direzione) {
 		Scanner scannerDirezione = new Scanner(System.in);
 		if(direzione==null) {
