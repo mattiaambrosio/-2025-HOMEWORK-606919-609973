@@ -1,7 +1,15 @@
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class StanzaTest {
+public class PartitaTest {
+	
+	private Partita partita;
+	
+	@BeforeEach
+	public void setUp() {
+		
+	}
 
 	@Test
 	void test() {
