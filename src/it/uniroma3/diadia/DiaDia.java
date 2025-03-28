@@ -35,7 +35,7 @@ public class DiaDia {
 
 	public DiaDia(IOConsole ioconsole) {
 		this.ioconsole = ioconsole;
-		this.partita = new Partita(ioconsole);
+		this.partita = new Partita();
 
 	}
 
@@ -69,7 +69,7 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
 		else if(comandoDaEseguire.getNome().equals("borsa"))
-			this.partita.getGiocatore().getBorsa().vediBorsa();
+			ioconsole.mostraMessaggio(this.partita.getGiocatore().getBorsa().toString());
 		else
 			this.ioconsole.mostraMessaggio("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -90,6 +90,14 @@ public class DiaDia {
 		this.ioconsole.mostraMessaggio("");
 	}
 	private void prendi(String nomeAttrezzo) {
+		if(this.partita.getLabirinto().getStanzaCorrente().getNumeroAttrezzi() == 0) {
+			this.ioconsole.mostraMessaggio("Non ci sono attrezzi in questa stanza!");
+			return;
+		}
+		if(this.partita.getGiocatore().getBorsa().getPeso() >= 10) {
+			this.ioconsole.mostraMessaggio("La borsa pesa troppo!");
+			return;
+		}
 		if(nomeAttrezzo==null) {
 			this.ioconsole.mostraMessaggio("Quale attrezzo vuoi prendere?");
 			nomeAttrezzo = this.ioconsole.leggiRiga();
@@ -98,11 +106,21 @@ public class DiaDia {
 		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(nomeAttrezzo);
 		if(attrezzo!=null) {
 			this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
+			this.ioconsole.mostraMessaggio("Attrezzo preso!");
 		}
+		else this.ioconsole.mostraMessaggio("Attrezzo non presente nella stanza!");
 
 
 	}
 	private void posa(String nomeAttrezzo) {
+		if(this.partita.getGiocatore().getBorsa().getNumeroAttrezzi() == 0) {
+			this.ioconsole.mostraMessaggio("Non hai attrezzi in borsa!");
+			return;
+		}
+		if (this.partita.getLabirinto().getStanzaCorrente().getNumeroAttrezzi() >= 10){
+			this.ioconsole.mostraMessaggio("Non c'è spazio nella stanza!");
+			return;
+		}
 		if(nomeAttrezzo==null) {
 			this.ioconsole.mostraMessaggio("Quale attrezzo vuoi posare?");
 			nomeAttrezzo = this.ioconsole.leggiRiga();
@@ -111,7 +129,9 @@ public class DiaDia {
 		this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
 		if(attrezzo!=null) {
 			this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
+			this.ioconsole.mostraMessaggio("Hai posato " +attrezzo.toString()+ " nella stanza!");
 		}
+		else this.ioconsole.mostraMessaggio("Non hai questo attrezzo in borsa!");
 
 	}
 	private void vai(String direzione) {
@@ -130,6 +150,7 @@ public class DiaDia {
 		}
 		this.ioconsole.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 	}
+
 
 	/**
 	 * Comando "Fine".

@@ -8,14 +8,15 @@ public class PartitaTest {
 	
 	private Partita partita;
 	
+	
 	@BeforeEach
 	public void setUp() {
 		
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testVinta() {
+		
 	}
 
 }

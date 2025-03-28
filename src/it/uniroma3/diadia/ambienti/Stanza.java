@@ -1,5 +1,5 @@
 package it.uniroma3.diadia.ambienti;
-import java.util.Scanner;
+import it.uniroma3.diadia.DiaDia;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -28,6 +28,7 @@ public class Stanza {
 	private int numeroStanzeAdiacenti;
 
 	private String[] direzioni;
+	
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -108,11 +109,9 @@ public class Stanza {
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
 			this.attrezzi[numeroAttrezzi] = attrezzo;
 			this.numeroAttrezzi++;
-			System.out.println("Hai posato " +attrezzo.toString()+ " nella stanza!");
 			return true;
 		}
 		else {
-			System.out.println("Non c'è spazio nella stanza!");
 			return false;
 		}
 	}
@@ -177,7 +176,6 @@ public class Stanza {
 	 */
 	public boolean removeAttrezzo(String nomeAttrezzo) {
 		if(this.numeroAttrezzi==0) {
-			System.out.println("Non ci sono attrezzi in questa stanza!");
 			return false;
 		}
 		else {
@@ -186,13 +184,10 @@ public class Stanza {
 					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 						this.attrezzi[i]=null;
 						this.numeroAttrezzi--;
-						System.out.println("Attrezzo preso!");
 						return true;
 					}
 				}
 			}
-			System.out.println("Attrezzo non presente nella stanza!");
-		
 		}
 		return false;
 	}
@@ -202,6 +197,10 @@ public class Stanza {
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
+	}
+	
+	public int getNumeroAttrezzi() {
+		return this.numeroAttrezzi;
 	}
 
 }

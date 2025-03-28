@@ -1,13 +1,12 @@
 package it.uniroma3.diadia.giocatore;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.IOConsole;
+
 
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	private Attrezzo[] attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
-	private IOConsole ioconsole;
 	
 
 	public Borsa(int pesoMax) {
@@ -15,9 +14,8 @@ public class Borsa {
 		this.attrezzi = new Attrezzo[10]; // speriamo bastino...
 		this.numeroAttrezzi = 0;
 	}
-	public Borsa(IOConsole ioconsole) {
+	public Borsa() {
 		this(DEFAULT_PESO_MAX_BORSA);
-		this.ioconsole = ioconsole;
 	}
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
@@ -61,7 +59,6 @@ public class Borsa {
 		Attrezzo a = null;
 		int x = this.numeroAttrezzi;
 		if(this.numeroAttrezzi==0) {
-			this.ioconsole.mostraMessaggio("Non hai attrezzi in borsa...");
 			return null;
 		}
 		else {
@@ -77,7 +74,6 @@ public class Borsa {
 			}
 		}
 		if(numeroAttrezzi==x) {
-			this.ioconsole.mostraMessaggio("Non hai questo attrezzo in borsa...");
 			return a;
 		}
 		return a;
@@ -97,18 +93,10 @@ public class Borsa {
 		return s.toString();
 	}
 
-	public void vediBorsa() {
-		if(!isEmpty()) {
-			this.ioconsole.mostraMessaggio("La tua borsa contiene:");
-			for(int i=0; i<this.numeroAttrezzi; i++) {
-				if(this.attrezzi[i]!=null) {
-					this.ioconsole.mostraMessaggio(this.attrezzi[i].toString());
-				}
-			}
-			this.ioconsole.mostraMessaggio("Peso Totale: " +this.getPeso()+"kg/"+this.pesoMax+"kg");
-		}
-		else
-			this.ioconsole.mostraMessaggio("Borsa vuota!");
+
+	public int getNumeroAttrezzi() {
+		
+			return this.numeroAttrezzi;	
 	}
 
 }

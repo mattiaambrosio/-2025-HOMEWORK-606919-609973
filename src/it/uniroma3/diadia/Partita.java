@@ -1,6 +1,5 @@
 package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
@@ -19,9 +18,9 @@ public class Partita {
 	public Giocatore giocatore;
 
 
-	public Partita(IOConsole ioconsole) {
+	public Partita() {
 		this.labirinto = new Labirinto();
-		this.giocatore = new Giocatore(ioconsole);
+		this.giocatore = new Giocatore();
 		this.finita = false;
 	}
 
