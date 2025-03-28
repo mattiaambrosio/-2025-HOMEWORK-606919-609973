@@ -1,16 +1,23 @@
+package it.uniroma3.diadia.giocatore;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.IOConsole;
 
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	private Attrezzo[] attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
-	public Borsa() {
-		this(DEFAULT_PESO_MAX_BORSA);
-	}
+	private IOConsole ioconsole;
+	
+
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
 		this.attrezzi = new Attrezzo[10]; // speriamo bastino...
 		this.numeroAttrezzi = 0;
+	}
+	public Borsa(IOConsole ioconsole) {
+		this(DEFAULT_PESO_MAX_BORSA);
+		this.ioconsole = ioconsole;
 	}
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
@@ -52,24 +59,25 @@ public class Borsa {
 	}
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
-		int x = numeroAttrezzi;
+		int x = this.numeroAttrezzi;
 		if(this.numeroAttrezzi==0) {
-			System.out.println("Non hai attrezzi in borsa...");
+			this.ioconsole.mostraMessaggio("Non hai attrezzi in borsa...");
 			return null;
 		}
 		else {
-			for(int i=0; i<this.attrezzi.length; i++) {
+			for(int i=0; i<this.numeroAttrezzi; i++) {
 				if(this.attrezzi[i]!=null) {
 					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
-						a = this.attrezzi[i];
-						this.attrezzi[i]=null;
+						for(int j=i; j<this.numeroAttrezzi; j++) {
+							this.attrezzi[j] = this.attrezzi[j+1];
+							this.numeroAttrezzi--;
+						}
 					}
 				}
 			}
-			this.numeroAttrezzi--;
 		}
 		if(numeroAttrezzi==x) {
-			System.out.println("Non hai questo attrezzo in borsa...");
+			this.ioconsole.mostraMessaggio("Non hai questo attrezzo in borsa...");
 			return a;
 		}
 		return a;
@@ -91,14 +99,16 @@ public class Borsa {
 
 	public void vediBorsa() {
 		if(!isEmpty()) {
+			this.ioconsole.mostraMessaggio("La tua borsa contiene:");
 			for(int i=0; i<this.numeroAttrezzi; i++) {
 				if(this.attrezzi[i]!=null) {
-					System.out.println(this.attrezzi[i].toString());
+					this.ioconsole.mostraMessaggio(this.attrezzi[i].toString());
 				}
 			}
+			this.ioconsole.mostraMessaggio("Peso Totale: " +this.getPeso()+"kg/"+this.pesoMax+"kg");
 		}
 		else
-			System.out.println("Borsa vuota!");
+			this.ioconsole.mostraMessaggio("Borsa vuota!");
 	}
 
 }
