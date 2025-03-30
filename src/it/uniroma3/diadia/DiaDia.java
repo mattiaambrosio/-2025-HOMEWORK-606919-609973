@@ -106,9 +106,9 @@ public class DiaDia {
 		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(nomeAttrezzo);
 		if(attrezzo!=null) {
 			this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
-			this.ioconsole.mostraMessaggio("Attrezzo preso!");
+			this.ioconsole.mostraMessaggio("Hai preso " +attrezzo.toString()+ "!");
 		}
-		else this.ioconsole.mostraMessaggio("Attrezzo non presente nella stanza!");
+		else this.ioconsole.mostraMessaggio( nomeAttrezzo +" non presente nella stanza!");
 
 
 	}
@@ -131,7 +131,7 @@ public class DiaDia {
 			this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
 			this.ioconsole.mostraMessaggio("Hai posato " +attrezzo.toString()+ " nella stanza!");
 		}
-		else this.ioconsole.mostraMessaggio("Non hai questo attrezzo in borsa!");
+		else this.ioconsole.mostraMessaggio("Non hai "+ nomeAttrezzo +" in borsa!");
 
 	}
 	private void vai(String direzione) {
