@@ -13,9 +13,9 @@ public class StanzaTest {
 
 	@BeforeEach
 	public void setUp() {
-		this.stanza = new Stanza("Atrio");
-		this.stanzaAdiacente = new Stanza("N10");
-		this.attrezzo = new Attrezzo("lanterna", 3);
+		stanza = new Stanza("Atrio");
+		stanzaAdiacente = new Stanza("N10");
+		attrezzo = new Attrezzo("lanterna", 3);
 	}
 	
 	@Test
@@ -31,19 +31,21 @@ public class StanzaTest {
 	public void testAddAttrezzo() {
 		assertTrue(stanza.addAttrezzo(attrezzo));
 		assertNotNull(stanza.getAttrezzo("lanterna"));
-	}
-	@Test
-	public void testRemoveAttrezzo() {
-		stanza.addAttrezzo(attrezzo);
-		assertTrue(stanza.removeAttrezzo("lanterna"));
-		assertFalse(stanza.hasAttrezzo("lanterna"));
-		assertFalse(stanza.removeAttrezzo("osso"));
+		assertNull(stanza.getAttrezzo("osso"));
 	}
 	@Test
 	public void testHasAttrezzo() {
 		stanza.addAttrezzo(attrezzo);
 		assertTrue(stanza.hasAttrezzo("lanterna"));
+		assertFalse(stanza.hasAttrezzo("piccione"));
+		assertNotNull(stanza.hasAttrezzo("piccione"));
 	}
-	
-
+	@Test
+	public void testRemoveAttrezzo() {
+		stanza.addAttrezzo(attrezzo);
+		assertTrue(stanza.removeAttrezzo("lanterna"));
+		assertFalse(stanza.removeAttrezzo("osso"));
+		assertFalse(stanza.removeAttrezzo("chiodo"));
+		
+	}
 }

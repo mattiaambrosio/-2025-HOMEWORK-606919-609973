@@ -28,7 +28,7 @@ public class Stanza {
 	private int numeroStanzeAdiacenti;
 
 	private String[] direzioni;
-	
+
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -145,8 +145,10 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+			if(attrezzo!=null) {
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
+			}
 		}
 		return trovato;
 	}
@@ -198,7 +200,7 @@ public class Stanza {
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
 	}
-	
+
 	public int getNumeroAttrezzi() {
 		return this.numeroAttrezzi;
 	}
