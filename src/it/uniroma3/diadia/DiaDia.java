@@ -86,7 +86,7 @@ public class DiaDia {
 	 */
 	private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
-			System.out.print(elencoComandi[i]+" ");
+			this.ioconsole.mostraMessaggio(elencoComandi[i]+" ");
 		this.ioconsole.mostraMessaggio("");
 	}
 	private void prendi(String nomeAttrezzo) {
