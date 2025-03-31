@@ -79,7 +79,7 @@ public class DiaDia {
 			return false;
 	}   
 
-	// implementazioni dei comandi dell'utente:
+	// implementazioni dei comandi dell'utente:.
 
 	/**
 	 * Stampa informazioni di aiuto.
