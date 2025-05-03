@@ -16,7 +16,13 @@ import java.util.Scanner;
  * @version base
  */
 
-public class Comando {
+public interface Comando{
+	public void esegui(Partita partita);
+	
+	public void setParametro(String parametro);
+}
+
+/*public class Comando {
 
 	private String nome;
 	private String parametro;
@@ -44,4 +50,4 @@ public class Comando {
 	public boolean sconosciuto() {
 		return (this.nome == null);
 	}
-}
+}*/
