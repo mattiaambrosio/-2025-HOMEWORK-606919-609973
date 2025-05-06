@@ -72,4 +72,8 @@ public class DiaDia {
 		gioco.gioca();
 
 	}
+
+	public Partita getPartita() {
+		return this.partita;
+	}
 }
