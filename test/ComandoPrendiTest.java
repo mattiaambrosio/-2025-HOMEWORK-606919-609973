@@ -1,17 +1,14 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.comandi.*;
 
 
 class ComandoPrendiTest {
-	private String attrezzo;
+
 	private Comando comandoPrendi;
 	private IO io;
 	private Partita partita;
