@@ -3,8 +3,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
 public class Labirinto {
-	Stanza stanzaCorrente;
-	Stanza stanzaVincente;
+	public Stanza stanzaCorrente;
+	public Stanza stanzaVincente;
 
 	public Labirinto() {
 		creaStanze();
@@ -55,6 +55,10 @@ public class Labirinto {
 	
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
+	}
+	
+	public void setStanzaVincente(Stanza stanzaVincente) {
+		this.stanzaVincente = stanzaVincente;
 	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {

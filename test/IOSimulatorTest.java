@@ -1,5 +1,9 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.DiaDia;
@@ -12,9 +16,9 @@ class IOSimulatorTest {
 	
 	@Test
 	void testVittoria() {
-		String vittoria[] = {"guarda", "vai sud", "prendi chiave", "vai nord", "posa chiave", "guarda", "vai nord"};
+		List<String> v = new ArrayList<String>(Arrays.asList("guarda", "vai sud", "prendi chiave", "vai nord", "posa chiave", "guarda", "vai nord"));
 		
-		io = new IOSimulator(vittoria);
+		io = new IOSimulator(v);
 		gioco = new DiaDia(io);
 		gioco.gioca();
 		
