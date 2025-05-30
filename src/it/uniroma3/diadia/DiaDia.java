@@ -70,13 +70,31 @@ public class DiaDia {
 
 	public static void main(String[] argc) {
 		IO io = new IOConsole();
-		Labirinto bilocale = new LabirintoBuilder()
-				.addStanzaIniziale("camera")
-				.addStanzaVincente("vesuvio")
-				.addAttrezzo("bibbia",10)// dove? fa riferimento all’ultima stanza aggiunta: la “camera”
-				.addAdiacenza("camera","vesuvio" ,"Sudde") // camera si trova a nord di salotto
-				.getLabirinto(); // restituisce il Labirinto così specificato
-		DiaDia gioco = new DiaDia(io,bilocale);
+		Labirinto napule = new LabirintoBuilder()
+				.addStanzaIniziale("Angri")
+				.addAttrezzo("stelle-filanti",4)
+				.addStanzaVincente("Vesuvio")
+				.addStanza("Stadio")
+				.addAttrezzo("amore",3)
+				.addAttrezzo("pallone",5)
+				.addStanzaMagica("Murales Maradona")
+				.addAttrezzo("souvenir",2)
+				.addStanzaBloccata("Scampia", "est", "pizza-portafoglio")
+				.addAttrezzo("pastiera",8)// dove? fa riferimento allï¿½ultima stanza aggiunta: la ï¿½cameraï¿½
+				.addStanzaBuia("Napoli Sotteranea", "amore")
+				.addAttrezzo("pizza-portafoglio",10)
+				.addAdiacenza("Angri","Napoli Sotteranea","sud")
+				.addAdiacenza("Angri","Murales Maradona","ovest")
+				.addAdiacenza("Angri","Stadio","nord")
+				.addAdiacenza("Angri","Scampia","est")
+				.addAdiacenza("Scampia","Vesuvio","est")
+				.addAdiacenza("Napoli Sotteranea","Angri","nord")
+				.addAdiacenza("Murales Maradona","Angri","est")
+				.addAdiacenza("Stadio","Angri","sud")
+				.addAdiacenza("Scampia","Angri","ovest")
+				.addAdiacenza("Vesuvio","Scampia","ovest")// camera si trova a nord di salotto
+				.getLabirinto(); // restituisce il Labirinto cosï¿½ specificato
+		DiaDia gioco = new DiaDia(io, napule);
 		gioco.gioca();
 
 	}

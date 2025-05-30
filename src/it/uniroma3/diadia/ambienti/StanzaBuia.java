@@ -14,7 +14,7 @@ public class StanzaBuia extends Stanza{
 	@Override
 	public String getDescrizione() {
 		String buio = "C'è buio pesto";
-		if(hasAttrezzo("lanterna")) {
+		if(hasAttrezzo(this.nomeAtt)) {
 			return toString();
 		}
 		else return buio;	

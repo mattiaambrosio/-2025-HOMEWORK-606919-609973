@@ -61,6 +61,24 @@ public class LabirintoBuilder extends Labirinto{
 		}
 		return this;
 	}
+	
+	public LabirintoBuilder addStanzaMagica(String nome) {
+		Stanza m = new StanzaMagica(nome);
+		UltimaAggiunta(m);
+		return this;
+	}
+	
+	public LabirintoBuilder addStanzaBuia(String nome, String attrezzo) {
+		Stanza b = new StanzaBuia(nome, attrezzo);
+		UltimaAggiunta(b);
+		return this;
+	}
+	
+	public LabirintoBuilder addStanzaBloccata(String nome, String dir, String attrezzo) {
+		Stanza bl = new StanzaBloccata(nome, dir, attrezzo);
+		UltimaAggiunta(bl);
+		return this;
+	}
 
 	public void UltimaAggiunta(Stanza stanza) {
 		this.ultima = stanza;

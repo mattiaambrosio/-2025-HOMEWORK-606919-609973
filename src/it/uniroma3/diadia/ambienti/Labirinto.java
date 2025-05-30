@@ -7,10 +7,10 @@ public class Labirinto	{
 	public Stanza stanzaVincente;
 
 	public Labirinto() {
-		creaStanze();
+		//creaStanze();
 	}
 
-	private void creaStanze() {
+	/*private void creaStanze() {
 
 		
 		Attrezzo lanterna = new Attrezzo("lanterna",3);
@@ -46,7 +46,7 @@ public class Labirinto	{
 		// il gioco comincia nell'atrio
 		stanzaCorrente = atrio;  
 		stanzaVincente = biblioteca;
-	}
+	}*/
 	
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
