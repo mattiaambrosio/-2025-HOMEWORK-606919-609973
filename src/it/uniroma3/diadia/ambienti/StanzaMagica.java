@@ -36,6 +36,7 @@ public class StanzaMagica extends Stanza {
 		nomeInvertito = nomeInvertito.reverse();
 		attrezzo = new Attrezzo(nomeInvertito.toString(),
 				pesoX2);
+		contatoreAttrezziPosati = 0;
 		return attrezzo;
 	}
 }
