@@ -8,7 +8,7 @@ import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoAiuto extends AbstractComando{
-	static final private List<String> elencoComandi = new ArrayList<String>(Arrays.asList("vai, aiuto, fine, prendi, posa, borsa, guarda"));
+	static final private List<String> elencoComandi = new ArrayList<String>(Arrays.asList("vai, aiuto, fine, prendi, posa, borsa, guarda, mangia"));
 	private IO ioconsole;
 	
 	public ComandoAiuto(IO io) {

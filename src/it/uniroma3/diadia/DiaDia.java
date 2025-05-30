@@ -40,7 +40,7 @@ public class DiaDia {
 			+ "Ci sono attrezzi che potrebbero servirti per l'impresa:\n"
 			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili,\n"
 			+ "regalarli se pensi che possano tirarti fuori dai guai e puoi addirittura mangiarli se hai fame.\n"
-			+ "Per conoscere le istruzioni premi 'aiuto', Buon viaggio fratm/n";
+			+ "Per conoscere le istruzioni premi 'aiuto', Buon viaggio fratm\n";
 			
 			
 
