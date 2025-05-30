@@ -18,7 +18,7 @@ class IOSimulatorTest {
 	Labirinto lab;
 
 	@Test
-	void testVittoria() {
+	void testVittoria() throws Exception {
 		List<String> v = new ArrayList<String>(Arrays.asList("vai nord", "prendi amore", "vai sud", "vai sud", "posa amore", "guarda", "prendi pizza-portafoglio", "vai nord", "vai est", "posa pizza-portafoglio", "guarda", "vai est"));
 
 		io = new IOSimulator(v);

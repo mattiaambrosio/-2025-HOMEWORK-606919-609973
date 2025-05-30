@@ -1,4 +1,8 @@
 package it.uniroma3.diadia;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.LabirintoBuilder;
@@ -21,16 +25,25 @@ import it.uniroma3.diadia.comandi.*;
 public class DiaDia {
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
-			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
+			/*"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
 			"alcuni amici, altri... chissa!\n"+
 			"Ci sono attrezzi che potrebbero servirti nell'impresa:\n"+
 			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
-			"Per conoscere le istruzioni usa il comando 'aiuto'.";
+			"Per conoscere le istruzioni usa il comando 'aiuto'.";*/
+			"Ti trovi ad Angri, vicino Napoli, ma oggi è diversa dal solito...\n"
+			+ "Meglio andare al piu' presto in cima al Vesuvio per guardare meglio cosa succede nella città.\n"
+			+ "Ma come ci si arriva?\n"
+			+ "I vicoli napoletani sono popolati da alcuni strani personaggi, alcuni scugnizzi, altri...chissa!\n"
+			+ "Ci sono attrezzi che potrebbero servirti per l'impresa:\n"
+			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili,\n"
+			+ "regalarli se pensi che possano tirarti fuori dai guai e puoi addirittura mangiarli se hai fame.\n"
+			+ "Per conoscere le istruzioni premi 'aiuto', Buon viaggio fratm/n";
+			
+			
 
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "borsa", "guarda"};
 
 	private Partita partita;
 	private IO ioconsole;
@@ -43,7 +56,7 @@ public class DiaDia {
 
 	}
 
-	public void gioca() {
+	public void gioca() throws Exception {
 		String istruzione; 
 
 		this.ioconsole.mostraMessaggio(MESSAGGIO_BENVENUTO);	
@@ -52,7 +65,7 @@ public class DiaDia {
 		while (!processaIstruzione(istruzione));
 	}
 
-	private boolean processaIstruzione(String istruzione) {
+	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(ioconsole);
 				comandoDaEseguire = factory.costruisciComando(istruzione);
@@ -68,7 +81,7 @@ public class DiaDia {
 		this.ioconsole.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
 
-	public static void main(String[] argc) {
+	public static void main(String[] argc) throws Exception {
 		IO io = new IOConsole();
 		Labirinto napule = new LabirintoBuilder()
 				.addStanzaIniziale("Angri")
@@ -80,9 +93,9 @@ public class DiaDia {
 				.addStanzaMagica("Murales Maradona")
 				.addAttrezzo("souvenir",2)
 				.addStanzaBloccata("Scampia", "est", "pizza-portafoglio")
-				.addAttrezzo("pastiera",8)// dove? fa riferimento all�ultima stanza aggiunta: la �camera�
+				.addAttrezzo("pastiera",4)// dove? fa riferimento all�ultima stanza aggiunta: la �camera�
 				.addStanzaBuia("Napoli Sotteranea", "amore")
-				.addAttrezzo("pizza-portafoglio",10)
+				.addAttrezzo("pizza-portafoglio",6)
 				.addAdiacenza("Angri","Napoli Sotteranea","sud")
 				.addAdiacenza("Angri","Murales Maradona","ovest")
 				.addAdiacenza("Angri","Stadio","nord")

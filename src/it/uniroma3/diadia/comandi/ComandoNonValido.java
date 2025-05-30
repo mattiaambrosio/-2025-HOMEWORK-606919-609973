@@ -3,7 +3,7 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
-public class ComandoNonValido implements Comando{
+public class ComandoNonValido extends AbstractComando{
 	private IO ioconsole;
 
 	
@@ -16,8 +16,6 @@ public class ComandoNonValido implements Comando{
 		this.ioconsole.mostraMessaggio("Comando sconosciuto");
 	}
 	
-	@Override
-	public void setParametro(String parametro) {}
 
 }
 	

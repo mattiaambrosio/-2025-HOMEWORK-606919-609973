@@ -5,7 +5,7 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
-public class ComandoGuarda implements Comando{
+public class ComandoGuarda extends AbstractComando{
 	private IO ioconsole;
 	
 	public ComandoGuarda(IO io) {
@@ -17,6 +17,5 @@ public class ComandoGuarda implements Comando{
 		this.ioconsole.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		this.ioconsole.mostraMessaggio("Possiedi: "+ partita.getGiocatore().getCfu() +" cfu");
 	}
-	@Override
-	public void setParametro(String parametro) {}
+
 }
