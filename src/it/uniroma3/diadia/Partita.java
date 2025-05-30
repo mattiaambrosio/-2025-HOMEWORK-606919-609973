@@ -1,5 +1,6 @@
 package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
@@ -18,8 +19,8 @@ public class Partita {
 	public Giocatore giocatore;
 
 
-	public Partita() {
-		this.labirinto = new Labirinto();
+	public Partita(Labirinto lab) {
+		this.labirinto = lab;
 		this.giocatore = new Giocatore();
 		this.finita = false;
 	}
@@ -37,7 +38,7 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean vinta() {
-		return this.labirinto.getStanzaCorrente() == this.labirinto.getStanzaVincente();
+		return this.labirinto.getStanzaCorrente().getNome().equals(this.labirinto.getStanzaVincente().getNome());
 	}
 
 	public boolean isFinita() {
