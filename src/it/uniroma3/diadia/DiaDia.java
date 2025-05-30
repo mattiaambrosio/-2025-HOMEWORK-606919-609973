@@ -34,7 +34,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";*/
 			"Ti trovi ad Angri, vicino Napoli, ma oggi è diversa dal solito...\n"
-			+ "Meglio andare al piu' presto in cima al Vesuvio per guardare meglio cosa succede nella città.\n"
+			+ "Meglio andare al piu' presto in cima al Vesuvio per guardare meglio cosa succede nella citta'.\n"
 			+ "Ma come ci si arriva?\n"
 			+ "I vicoli napoletani sono popolati da alcuni strani personaggi, alcuni scugnizzi, altri...chissa!\n"
 			+ "Ci sono attrezzi che potrebbero servirti per l'impresa:\n"
