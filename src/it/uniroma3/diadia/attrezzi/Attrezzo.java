@@ -55,4 +55,8 @@ public class Attrezzo implements Comparable<Attrezzo>{
 		return this.nome.compareTo(a.getNome());
 	}
 
+	public void setPeso(int p) {
+		this.peso = p;
+	}
+
 }

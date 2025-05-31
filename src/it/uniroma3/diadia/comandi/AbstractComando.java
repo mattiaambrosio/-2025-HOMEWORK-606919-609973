@@ -11,5 +11,9 @@ public abstract class AbstractComando implements Comando{
 	public void setParametro(String parametro) {
 		this.parametro  = parametro;
 	}
+	
+	public String getParametro() {
+		return this.parametro;
+	}
 
 }

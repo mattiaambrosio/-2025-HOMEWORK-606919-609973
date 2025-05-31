@@ -41,8 +41,8 @@ public class DiaDia {
 			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili,\n"
 			+ "regalarli se pensi che possano tirarti fuori dai guai e puoi addirittura mangiarli se hai fame.\n"
 			+ "Per conoscere le istruzioni scrivi 'aiuto', Buon viaggio fratm\n";
-			
-			
+
+
 
 
 	private Partita partita;
@@ -52,7 +52,7 @@ public class DiaDia {
 	public DiaDia(IO ioconsole,Labirinto lab) {
 		this.ioconsole = ioconsole;
 		this.partita = new Partita(lab);
-		
+
 
 	}
 
@@ -68,7 +68,7 @@ public class DiaDia {
 	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(ioconsole);
-				comandoDaEseguire = factory.costruisciComando(istruzione);
+		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
 			ioconsole.mostraMessaggio("Hai vinto!");
@@ -83,13 +83,14 @@ public class DiaDia {
 
 	public static void main(String[] argc) throws Exception {
 		IO io = new IOConsole();
+		Attrezzo pallone = new Attrezzo("pallone", 5);
 		Labirinto napule = new LabirintoBuilder()
 				.addStanzaIniziale("Angri")
 				.addAttrezzo("stelle-filanti",4)
 				.addStanzaVincente("Vesuvio")
 				.addStanza("Stadio")
 				.addAttrezzo("amore",3)
-				.addAttrezzo("pallone",5)
+				.addMago("Il Mago Maradona", "Io sono il grande mago", pallone)
 				.addStanzaMagica("Murales Maradona")
 				.addAttrezzo("souvenir",2)
 				.addStanzaBloccata("Scampia", "est", "pizza-portafoglio")

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.Mago;
 
 public class LabirintoBuilder extends Labirinto{
 
@@ -26,7 +27,7 @@ public class LabirintoBuilder extends Labirinto{
 	public LabirintoBuilder addStanzaIniziale(String nomeStanza) {
 		Stanza s = new Stanza(nomeStanza);
 		this.labirinto.setStanzaCorrente(s);
-		
+
 		UltimaAggiunta(s);
 		return this;
 	}
@@ -61,22 +62,29 @@ public class LabirintoBuilder extends Labirinto{
 		}
 		return this;
 	}
-	
+
 	public LabirintoBuilder addStanzaMagica(String nome) {
 		Stanza m = new StanzaMagica(nome);
 		UltimaAggiunta(m);
 		return this;
 	}
-	
+
 	public LabirintoBuilder addStanzaBuia(String nome, String attrezzo) {
 		Stanza b = new StanzaBuia(nome, attrezzo);
 		UltimaAggiunta(b);
 		return this;
 	}
-	
+
 	public LabirintoBuilder addStanzaBloccata(String nome, String dir, String attrezzo) {
 		Stanza bl = new StanzaBloccata(nome, dir, attrezzo);
 		UltimaAggiunta(bl);
+		return this;
+	}
+
+	public LabirintoBuilder addMago(String nome, String pres, Attrezzo attrezzo) {
+		Mago mago = new Mago(nome, pres, attrezzo);
+		if(this.ultima==null) return this;
+		this.ultima.setPersonaggio(mago);
 		return this;
 	}
 
