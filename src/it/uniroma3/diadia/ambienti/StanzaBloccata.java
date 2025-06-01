@@ -4,10 +4,10 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaBloccata extends Stanza{
-	private String nomeDir;
+	private Direzione nomeDir;
 	private String nomeAtt;
 
-	public StanzaBloccata(String nome, String nomeDir, String nomeAtt) {
+	public StanzaBloccata(String nome, Direzione nomeDir, String nomeAtt) {
 		super(nome);
 		this.nomeDir = nomeDir;
 		this.nomeAtt = nomeAtt;
@@ -17,7 +17,7 @@ public class StanzaBloccata extends Stanza{
 		StringBuilder risultato = new StringBuilder();
 		risultato.append(super.getNome());
 		risultato.append("\nUscite: ");
-		for (String direzione : super.getDirezioni()) {
+		for (Direzione direzione : super.getDirezioni()) {
 			if (direzione!=null)
 				risultato.append(" " + direzione);
 			if(direzione.equals(nomeDir) && !hasAttrezzo(nomeAtt)) {

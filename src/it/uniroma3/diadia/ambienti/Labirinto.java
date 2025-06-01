@@ -1,12 +1,23 @@
 package it.uniroma3.diadia.ambienti;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.Cane;
+import it.uniroma3.diadia.personaggi.Mago;
+import it.uniroma3.diadia.personaggi.Strega;
 
 
 public class Labirinto	{
-	public Stanza stanzaCorrente;
-	public Stanza stanzaVincente;
+	private Stanza stanzaIniziale;
+	private Stanza stanzaVincente;
 
-	public Labirinto() {
+	private Labirinto(String nomeFile) throws FileNotFoundException, FormatoFileNonValidoException {
+		CaricatoreLabirinto c = new CaricatoreLabirinto(nomeFile);
+		c.carica();
+		this.stanzaIniziale = c.getStanzaIniziale();
+		this.stanzaVincente = c.getStanzaVincente();
 		//creaStanze();
 	}
 
@@ -48,6 +59,10 @@ public class Labirinto	{
 		stanzaVincente = biblioteca;
 	}*/
 	
+	public static LabirintoBuilder newBuilder(String labirinto) throws FileNotFoundException, FormatoFileNonValidoException {
+		return new LabirintoBuilder(labirinto);
+	}
+	
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
@@ -57,11 +72,116 @@ public class Labirinto	{
 	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
+		this.stanzaIniziale = stanzaCorrente;
 	}
 
 	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
+		return this.stanzaIniziale;
+	}
+	
+	public class LabirintoBuilder{
+		
+		private Labirinto labirinto;
+		private Stanza ultima;
+		private Map<String, Stanza> map;
+		
+		
+		public LabirintoBuilder(String labirinto) throws FileNotFoundException, FormatoFileNonValidoException {
+			this.labirinto = new Labirinto(labirinto);
+			this.map = new HashMap<>();
+		}
+		
+		public Map<String,Stanza> getMap(){
+			return map;
+		}
+
+		public Labirinto getLabirinto() {
+			return this.labirinto;
+		}
+
+		public LabirintoBuilder addStanzaIniziale(String nomeStanza) {
+			Stanza s = new Stanza(nomeStanza);
+			this.labirinto.setStanzaCorrente(s);
+
+			UltimaAggiunta(s);
+			return this;
+		}
+
+		public LabirintoBuilder addStanzaVincente(String nomeVincente) {
+			Stanza v = new Stanza(nomeVincente);
+			this.labirinto.setStanzaVincente(v);
+			UltimaAggiunta(v);
+
+			return this;
+
+		}
+
+		public LabirintoBuilder addStanza(String stanza) {
+			Stanza s = new Stanza(stanza);
+			UltimaAggiunta(s);
+			return this;
+		}
+
+		public LabirintoBuilder addAttrezzo(String nomeAttrezzo, int peso) {
+			Attrezzo a = new Attrezzo(nomeAttrezzo, peso);
+			if(this.ultima==null) return this;
+			this.ultima.addAttrezzo(a);
+			return this;
+		}
+
+		public LabirintoBuilder addAdiacenza(String stanza, String adiacente, Direzione direzione) {
+			Stanza s1 = this.map.get(stanza);
+			Stanza a1 = this.map.get(adiacente);
+			if(s1!=null) {
+				s1.impostaStanzaAdiacente(direzione, a1);
+			}
+			return this;
+		}
+
+		public LabirintoBuilder addStanzaMagica(String nome) {
+			Stanza m = new StanzaMagica(nome);
+			UltimaAggiunta(m);
+			return this;
+		}
+
+		public LabirintoBuilder addStanzaBuia(String nome, String attrezzo) {
+			Stanza b = new StanzaBuia(nome, attrezzo);
+			UltimaAggiunta(b);
+			return this;
+		}
+
+		public LabirintoBuilder addStanzaBloccata(String nome, Direzione dir, String attrezzo) {
+			Stanza bl = new StanzaBloccata(nome, dir, attrezzo);
+			UltimaAggiunta(bl);
+			return this;
+		}
+
+		public LabirintoBuilder addMago(String nome, String pres, Attrezzo attrezzo) {
+			Mago mago = new Mago(nome, pres, attrezzo);
+			if(this.ultima==null) return this;
+			this.ultima.setPersonaggio(mago);
+			return this;
+		}
+		
+		public LabirintoBuilder addCane(String nome, String pres, Attrezzo attrezzo, String cibo) {
+			Cane cane = new Cane(nome, pres, attrezzo, cibo);
+			if(this.ultima==null) return this;
+			this.ultima.setPersonaggio(cane);
+			return this;
+		}
+		
+		public LabirintoBuilder addStrega(String nome, String pres) {
+			Strega strega = new Strega(nome, pres);
+			if(this.ultima==null) return this;
+			this.ultima.setPersonaggio(strega);
+			return this;
+		}
+		
+
+		public void UltimaAggiunta(Stanza stanza) {
+			this.ultima = stanza;
+			this.map.put(stanza.getNome(),stanza);
+		}
 	}
 	
 }

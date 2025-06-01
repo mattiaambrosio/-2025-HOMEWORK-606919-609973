@@ -7,7 +7,7 @@ import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
 import it.uniroma3.diadia.personaggi.Strega;
 
-public class LabirintoBuilder extends Labirinto{
+/*public class LabirintoBuilder extends Labirinto{
 
 	private Labirinto labirinto;
 	private Stanza ultima;
@@ -56,7 +56,7 @@ public class LabirintoBuilder extends Labirinto{
 		return this;
 	}
 
-	public LabirintoBuilder addAdiacenza(String stanza, String adiacente, String direzione) {
+	public LabirintoBuilder addAdiacenza(String stanza, String adiacente, Direzione direzione) {
 		Stanza s1 = this.map.get(stanza);
 		Stanza a1 = this.map.get(adiacente);
 		if(s1!=null) {
@@ -77,7 +77,7 @@ public class LabirintoBuilder extends Labirinto{
 		return this;
 	}
 
-	public LabirintoBuilder addStanzaBloccata(String nome, String dir, String attrezzo) {
+	public LabirintoBuilder addStanzaBloccata(String nome, Direzione dir, String attrezzo) {
 		Stanza bl = new StanzaBloccata(nome, dir, attrezzo);
 		UltimaAggiunta(bl);
 		return this;
@@ -109,4 +109,4 @@ public class LabirintoBuilder extends Labirinto{
 		this.ultima = stanza;
 		this.map.put(stanza.getNome(),stanza);
 	}
-}
+}*/

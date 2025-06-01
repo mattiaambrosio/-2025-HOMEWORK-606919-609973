@@ -28,7 +28,7 @@ public class Stanza {
 
 	protected List<Attrezzo> attrezzi;
 
-	private Map<String, Stanza> stanzeAdiacenti;
+	private Map<Direzione, Stanza> stanzeAdiacenti;
 	
 	private AbstractPersonaggio personaggio;
 	
@@ -54,7 +54,7 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
+	public void impostaStanzaAdiacente (Direzione direzione, Stanza stanza) {
 		this.stanzeAdiacenti.put(direzione,stanza);
 	}
 	
@@ -186,7 +186,7 @@ public class Stanza {
 		return false;
 	}
 
-	public Set<String> getDirezioni() {
+	public Set<Direzione> getDirezioni() {
 		return this.stanzeAdiacenti.keySet();
 	}
 

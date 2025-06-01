@@ -5,7 +5,7 @@ import java.util.List;
 
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.*;
@@ -49,7 +49,7 @@ public class DiaDia {
 	private IO ioconsole;
 
 
-	public DiaDia(IO ioconsole,Labirinto lab) {
+	public DiaDia(IO ioconsole, Labirinto lab) {
 		this.ioconsole = ioconsole;
 		this.partita = new Partita(lab);
 
@@ -85,8 +85,8 @@ public class DiaDia {
 		IO io = new IOConsole();
 		Attrezzo pallone = new Attrezzo("pallone", 5);
 		Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
-		Labirinto napule = new LabirintoBuilder()
-				.addStanzaIniziale("Angri")
+		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+				/*.addStanzaIniziale("Angri")
 				.addAttrezzo("stelle-filanti",4)
 				.addCane("Pluto", "BAU BAU", ossomordicchiato, "pastiera")
 				.addStanzaVincente("Vesuvio")
@@ -110,8 +110,8 @@ public class DiaDia {
 				.addAdiacenza("Stadio","Angri","sud")
 				.addAdiacenza("Scampia","Angri","ovest")
 				.addAdiacenza("Vesuvio","Scampia","ovest")
-				.getLabirinto();
-		DiaDia gioco = new DiaDia(io, napule);
+				.getLabirinto();*/
+		DiaDia gioco = new DiaDia(io, labirinto);
 		gioco.gioca();
 
 	}
