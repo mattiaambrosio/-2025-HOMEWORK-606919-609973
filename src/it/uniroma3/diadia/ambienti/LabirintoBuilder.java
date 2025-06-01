@@ -3,7 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
+import it.uniroma3.diadia.personaggi.Strega;
 
 public class LabirintoBuilder extends Labirinto{
 
@@ -87,6 +89,21 @@ public class LabirintoBuilder extends Labirinto{
 		this.ultima.setPersonaggio(mago);
 		return this;
 	}
+	
+	public LabirintoBuilder addCane(String nome, String pres, Attrezzo attrezzo, String cibo) {
+		Cane cane = new Cane(nome, pres, attrezzo, cibo);
+		if(this.ultima==null) return this;
+		this.ultima.setPersonaggio(cane);
+		return this;
+	}
+	
+	public LabirintoBuilder addStrega(String nome, String pres) {
+		Strega strega = new Strega(nome, pres);
+		if(this.ultima==null) return this;
+		this.ultima.setPersonaggio(strega);
+		return this;
+	}
+	
 
 	public void UltimaAggiunta(Stanza stanza) {
 		this.ultima = stanza;

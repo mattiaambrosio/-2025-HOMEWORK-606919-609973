@@ -5,9 +5,18 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoSaluta extends AbstractComando{
 	
+	private IO io;
+	
+	public ComandoSaluta(IO io) {
+		this.io = io;
+	}
+	
 	@Override
 	public void esegui(Partita partita) {
-		partita.getLabirinto().getStanzaCorrente().getPersonaggio().saluta();
+		if(partita.getLabirinto().getStanzaCorrente().getPersonaggio()!=null)
+			io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getPersonaggio().saluta());
+		else 
+			io.mostraMessaggio("Non c'e' nessuno qui!");
 		
 	}
 }

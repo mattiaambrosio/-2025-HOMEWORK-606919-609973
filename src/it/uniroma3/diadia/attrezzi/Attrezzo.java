@@ -33,6 +33,10 @@ public class Attrezzo implements Comparable<Attrezzo>{
 	public String getNome() {
 		return this.nome;
 	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	/**
 	 * Restituisce il peso dell'attrezzo

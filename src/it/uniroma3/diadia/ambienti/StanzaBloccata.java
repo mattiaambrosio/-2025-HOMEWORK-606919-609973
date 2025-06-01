@@ -30,6 +30,9 @@ public class StanzaBloccata extends Stanza{
 				risultato.append(attrezzo.toString()+" ");
 			}
 		}
+		if(getPersonaggio()!=null) {
+			risultato.append("\nQui è presente: " +getPersonaggio());
+		}
 		return risultato.toString();
 	}
 

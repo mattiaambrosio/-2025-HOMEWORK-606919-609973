@@ -57,6 +57,14 @@ public class Stanza {
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		this.stanzeAdiacenti.put(direzione,stanza);
 	}
+	
+	public List<Stanza> getStanzeAdiacenti() {
+		List<Stanza> listaStanzeAdiacenti = new ArrayList<>();
+		for (Stanza s : stanzeAdiacenti.values()) {
+			listaStanzeAdiacenti.add(s);
+		}
+		return listaStanzeAdiacenti;
+	}
 
 	/**
 	 * Restituisce la stanza adiacente nella direzione specificata
@@ -115,6 +123,9 @@ public class Stanza {
 			if(attrezzo!=null) {
 				risultato.append(attrezzo.toString()+" ");
 			}
+		}
+		if(getPersonaggio()!=null) {
+			risultato.append("\nQui è presente: " +getPersonaggio());
 		}
 		return risultato.toString();
 	}

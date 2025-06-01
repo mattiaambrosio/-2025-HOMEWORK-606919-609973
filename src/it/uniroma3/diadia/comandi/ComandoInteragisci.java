@@ -10,6 +10,10 @@ public class ComandoInteragisci extends AbstractComando{
 	private String messaggio;
 	private IO io;
 	
+	public ComandoInteragisci(IO io) {
+		this.io = io;
+	}
+	
 	@Override
 	public void esegui(Partita partita) {
 		AbstractPersonaggio personaggio;

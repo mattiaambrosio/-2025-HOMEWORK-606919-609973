@@ -84,9 +84,11 @@ public class DiaDia {
 	public static void main(String[] argc) throws Exception {
 		IO io = new IOConsole();
 		Attrezzo pallone = new Attrezzo("pallone", 5);
+		Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
 		Labirinto napule = new LabirintoBuilder()
 				.addStanzaIniziale("Angri")
 				.addAttrezzo("stelle-filanti",4)
+				.addCane("Pluto", "BAU BAU", ossomordicchiato, "pastiera")
 				.addStanzaVincente("Vesuvio")
 				.addStanza("Stadio")
 				.addAttrezzo("amore",3)
@@ -94,7 +96,8 @@ public class DiaDia {
 				.addStanzaMagica("Murales Maradona")
 				.addAttrezzo("souvenir",2)
 				.addStanzaBloccata("Scampia", "est", "pizza-portafoglio")
-				.addAttrezzo("pastiera",4)// dove? fa riferimento all�ultima stanza aggiunta: la �camera�
+				.addAttrezzo("pastiera",4)
+				.addStrega("La Strega Partenopea", "Se fai il bravo ti porterò in un posto migliore")
 				.addStanzaBuia("Napoli Sotteranea", "amore")
 				.addAttrezzo("pizza-portafoglio",6)
 				.addAdiacenza("Angri","Napoli Sotteranea","sud")
@@ -106,8 +109,8 @@ public class DiaDia {
 				.addAdiacenza("Murales Maradona","Angri","est")
 				.addAdiacenza("Stadio","Angri","sud")
 				.addAdiacenza("Scampia","Angri","ovest")
-				.addAdiacenza("Vesuvio","Scampia","ovest")// camera si trova a nord di salotto
-				.getLabirinto(); // restituisce il Labirinto cos� specificato
+				.addAdiacenza("Vesuvio","Scampia","ovest")
+				.getLabirinto();
 		DiaDia gioco = new DiaDia(io, napule);
 		gioco.gioca();
 
