@@ -1,0 +1,11 @@
+Stanze:Angri,Stadio,MuralesMaradona,NapoliSotterranea,Scampia,Vesuvio
+Magica:MuralesMaradona
+Buia: NapoliSotterranea amore
+Bloccata: Scampia est pizzaportafoglio
+Inizio:Angri
+Vincente:Vesuvio
+Mago: Stadio Maradona DIOS pallone
+Cane: Angri Pluto BAUBAU osso
+Strega: Scampia LaStregaPartenopea UAAA
+Attrezzi:pastiera 4 Scampia, amore 3 Stadio, pizzaportafoglio 2 NapoliSotterranea
+Uscite:Angri nord Stadio,Angri sud NapoliSotterranea, Angri ovest MuralesMaradona, Angri est Scampia, Scampia est Vesuvio, Stadio sud Angri, NapoliSotterranea nord Angri, MuralesMaradona est Angri, Scampia ovest Angri, Vesuvio ovest Scampia

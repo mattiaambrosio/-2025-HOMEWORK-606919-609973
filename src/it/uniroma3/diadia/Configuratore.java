@@ -1,8 +1,11 @@
+package it.uniroma3.diadia;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public final class Configuratore {
+
+public class Configuratore {
 	
 	private static final String DIADIA_PROPERTIES = "diadia.properties";
 	private static final String PESO_MAX = "pesoMax";

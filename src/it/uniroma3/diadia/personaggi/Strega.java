@@ -2,7 +2,6 @@ package it.uniroma3.diadia.personaggi;
 
 import java.util.List;
 
-import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -10,7 +9,6 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class Strega extends AbstractPersonaggio{
 	
 	private static final String RISATA = "AHAHAHAHAHAH che spasso!";
-	private IO io;
 	public Strega(String nome, String pres) {
 		super(nome, pres);
 	}

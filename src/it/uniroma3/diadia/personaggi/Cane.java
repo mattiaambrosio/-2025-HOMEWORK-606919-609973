@@ -5,13 +5,12 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Cane extends AbstractPersonaggio{
 	private static final String MORSO = "Sei stato morso, hai perso 1 cfu!";
+	private static final String CIBO = "pastiera";
 	private Attrezzo attrezzo;
-	private String cibo;
 	
-	public Cane(String nome, String presentazione, Attrezzo attrezzo, String cibo) {
+	public Cane(String nome, String presentazione, Attrezzo attrezzo) {
 		super(nome, presentazione);
 		this.attrezzo = attrezzo;
-		this.cibo = cibo;
 	}
 	
 	@Override
@@ -21,7 +20,7 @@ public class Cane extends AbstractPersonaggio{
 	}
 	
 	public String riceviRegalo(Attrezzo att, Partita partita) {
-		if(this.cibo==att.getNome()) {
+		if(att.getNome().equals(CIBO)) {
 			partita.getLabirinto().getStanzaCorrente().addAttrezzo(this.attrezzo);
 			return "BAU BAU questo è il mio cibo preferito,\n"
 					+ "ti meriti un dono!";

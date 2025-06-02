@@ -3,9 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.StanzaBloccata;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 
 class StanzaBloccataTest {
 	
@@ -13,7 +14,7 @@ class StanzaBloccataTest {
 	
 	@BeforeEach
 	public void setUp() {
-		stanzaBloccata = new StanzaBloccata("Atrio","nord","chiave");
+		stanzaBloccata = new StanzaBloccata("Atrio", Direzione.nord, "chiave");
 	
 	}
 	

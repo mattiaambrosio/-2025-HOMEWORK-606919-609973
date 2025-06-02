@@ -1,13 +1,7 @@
 package it.uniroma3.diadia;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.*;
 
 /**
@@ -46,11 +40,11 @@ public class DiaDia {
 
 
 	private Partita partita;
-	private IO ioconsole;
+	private IO io;
 
 
 	public DiaDia(IO ioconsole, Labirinto lab) {
-		this.ioconsole = ioconsole;
+		this.io = ioconsole;
 		this.partita = new Partita(lab);
 
 
@@ -59,13 +53,31 @@ public class DiaDia {
 	public void gioca() throws Exception {
 		String istruzione; 
 
-		this.ioconsole.mostraMessaggio(MESSAGGIO_BENVENUTO);	
+		this.io.mostraMessaggio(MESSAGGIO_BENVENUTO);	
 		do		
-			istruzione = this.ioconsole.leggiRiga();
+			istruzione = this.io.leggiRiga();
 		while (!processaIstruzione(istruzione));
 	}
-
+	
 	private boolean processaIstruzione(String istruzione) throws Exception {
+		Comando comandoDaEseguire;
+		FabbricaDiComandiRiflessiva factory = new FabbricaDiComandiRiflessiva(this.io);
+		try {
+			comandoDaEseguire = factory.costruisciComando(istruzione);
+		} catch (ClassNotFoundException cne) {
+			comandoDaEseguire = factory.costruisciComando("NonValido");
+		} catch (NullPointerException npe) {
+			comandoDaEseguire = factory.costruisciComando("NonValido");
+		}
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.vinta())
+			io.mostraMessaggio("Hai vinto!");
+		if (this.partita.getGiocatore().getCfu()==0)
+			io.mostraMessaggio("Hai esaurito i CFU...");
+		return this.partita.isFinita();
+	}
+
+/*	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(ioconsole);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
@@ -79,13 +91,14 @@ public class DiaDia {
 
 	private void fine() {
 		this.ioconsole.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
-	}
+	}*/
 
 	public static void main(String[] argc) throws Exception {
+		Scanner scanner = new Scanner(System.in);
 		IO io = new IOConsole();
-		Attrezzo pallone = new Attrezzo("pallone", 5);
-		Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
-		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+		//Attrezzo pallone = new Attrezzo("pallone", 5);
+		//Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
+		Labirinto labirinto = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
 				/*.addStanzaIniziale("Angri")
 				.addAttrezzo("stelle-filanti",4)
 				.addCane("Pluto", "BAU BAU", ossomordicchiato, "pastiera")
@@ -113,6 +126,7 @@ public class DiaDia {
 				.getLabirinto();*/
 		DiaDia gioco = new DiaDia(io, labirinto);
 		gioco.gioca();
+		scanner.close();
 
 	}
 

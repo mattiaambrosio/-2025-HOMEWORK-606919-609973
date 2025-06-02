@@ -1,8 +1,11 @@
 package it.uniroma3.diadia.ambienti;
+
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.uniroma3.diadia.CaricatoreLabirinto;
+import it.uniroma3.diadia.FormatoFileNonValidoException;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
@@ -79,7 +82,7 @@ public class Labirinto	{
 		return this.stanzaIniziale;
 	}
 	
-	public class LabirintoBuilder{
+	public static class LabirintoBuilder{
 		
 		private Labirinto labirinto;
 		private Stanza ultima;
@@ -163,19 +166,20 @@ public class Labirinto	{
 			return this;
 		}
 		
-		public LabirintoBuilder addCane(String nome, String pres, Attrezzo attrezzo, String cibo) {
-			Cane cane = new Cane(nome, pres, attrezzo, cibo);
-			if(this.ultima==null) return this;
-			this.ultima.setPersonaggio(cane);
-			return this;
-		}
-		
 		public LabirintoBuilder addStrega(String nome, String pres) {
 			Strega strega = new Strega(nome, pres);
 			if(this.ultima==null) return this;
 			this.ultima.setPersonaggio(strega);
 			return this;
 		}
+		
+		public LabirintoBuilder addCane(String nome, String pres, Attrezzo attrezzo, String cibo) {
+			Cane cane = new Cane(nome, pres, attrezzo);
+			if(this.ultima==null) return this;
+			this.ultima.setPersonaggio(cane);
+			return this;
+		}
+		
 		
 
 		public void UltimaAggiunta(Stanza stanza) {

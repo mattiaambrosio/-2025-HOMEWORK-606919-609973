@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -24,8 +25,8 @@ public class StanzaTest {
 	}
 	@Test
 	public void testImpostaStanzaAdiacente() {
-		stanza.impostaStanzaAdiacente("sud", stanzaAdiacente);
-		assertEquals(stanzaAdiacente, stanza.getStanzaAdiacente("sud"));
+		stanza.impostaStanzaAdiacente(Direzione.sud, stanzaAdiacente);
+		assertEquals(stanzaAdiacente, stanza.getStanzaAdiacente(Direzione.sud));
 	}
 	@Test
 	public void testAddAttrezzo() {

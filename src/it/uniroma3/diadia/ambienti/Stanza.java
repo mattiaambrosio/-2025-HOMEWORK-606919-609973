@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import it.uniroma3.diadia.DiaDia;
-
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
@@ -31,9 +29,6 @@ public class Stanza {
 	private Map<Direzione, Stanza> stanzeAdiacenti;
 	
 	private AbstractPersonaggio personaggio;
-	
-	private String nomeP;
-	private String presentazione;
 
 
 
@@ -70,7 +65,7 @@ public class Stanza {
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * @param direzione
 	 */
-	public Stanza getStanzaAdiacente(String direzione) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 		return this.stanzeAdiacenti.get(direzione);
 	}
 
@@ -193,6 +188,7 @@ public class Stanza {
 	public int getNumeroAttrezzi() {
 		return this.attrezzi.size();
 	}
+	
 	
 	public void setPersonaggio(AbstractPersonaggio p) {
 		this.personaggio = p;

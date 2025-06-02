@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoAiuto extends AbstractComando{
-	static final private List<String> elencoComandi = new ArrayList<String>(Arrays.asList("vai, aiuto, fine, prendi, posa, borsa, guarda, mangia, regala"));
+	static final private List<String> elencoComandi = new ArrayList<String>(Arrays.asList("vai, aiuto, fine, prendi, posa, borsa, guarda, mangia, regala, interagisci, saluta"));
 	private IO ioconsole;
 	
 	public ComandoAiuto(IO io) {
 		this.ioconsole = io;
 	}
+
 	
 	@Override
 	public void esegui(Partita partita) {

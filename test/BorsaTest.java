@@ -1,8 +1,6 @@
-import static org.junit.Assert.assertNotSame;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -12,8 +10,6 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.ComparatorePerNome;
 
 class BorsaTest {
-	
-	
 
 	@Test
 	void testDueAttrezziPesoUguale() {

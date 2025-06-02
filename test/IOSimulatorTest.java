@@ -10,7 +10,6 @@ import it.uniroma3.diadia.DiaDia;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 
 class IOSimulatorTest {
 	IO io;
@@ -19,11 +18,11 @@ class IOSimulatorTest {
 
 	@Test
 	void testVittoria() throws Exception {
-		List<String> v = new ArrayList<String>(Arrays.asList("vai nord", "prendi amore", "vai sud", "vai sud", "posa amore", "guarda", "prendi pizza-portafoglio", "vai nord", "vai est", "posa pizza-portafoglio", "guarda", "vai est"));
+		List<String> v = new ArrayList<String>(Arrays.asList("vai nord", "prendi amore", "vai sud", "vai sud", "posa amore", "guarda", "prendi pizzaportafoglio", "vai nord", "vai est", "posa pizzaportafoglio", "guarda", "vai est"));
 
 		io = new IOSimulator(v);
-		lab = new LabirintoBuilder()
-			.addStanzaIniziale("Angri")
+		lab = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
+			/*.addStanzaIniziale("Angri")
 			.addAttrezzo("stelle-filanti",4)
 			.addStanzaVincente("Vesuvio")
 			.addStanza("Stadio")
@@ -45,7 +44,7 @@ class IOSimulatorTest {
 			.addAdiacenza("Stadio","Angri","sud")
 			.addAdiacenza("Scampia","Angri","ovest")
 			.addAdiacenza("Vesuvio","Scampia","ovest")// camera si trova a nord di salotto
-			.getLabirinto(); // restituisce il Labirinto cos� specificato
+			.getLabirinto(); // restituisce il Labirinto cos� specificato*/
 		gioco = new DiaDia(io, lab);
 		gioco.gioca();
 

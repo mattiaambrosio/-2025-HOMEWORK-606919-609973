@@ -1,8 +1,6 @@
 package it.uniroma3.diadia.comandi;
-import java.util.Arrays;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoGuarda extends AbstractComando{
