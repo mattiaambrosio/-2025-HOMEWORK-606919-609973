@@ -168,7 +168,7 @@ public class StanzaProtected {
 			return false;
 		}
 		else {
-			for(int i=0; i<this.NUMERO_MASSIMO_ATTREZZI; i++) {
+			for(int i=0; i<this.attrezzi.length; i++) {
 				if(this.attrezzi[i]!=null) {
 					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 						this.attrezzi[i]=null;

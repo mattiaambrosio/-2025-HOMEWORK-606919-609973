@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +21,15 @@ class ComandoVaiTest {
 	private Partita partita;
 	private Comando comandoVai;
 	private IO io;
+	private Scanner scanner;
 
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		io = new IOConsole();
+		String input = "sud";
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        scanner = new Scanner(inputStream);
+        io = new IOConsole(scanner);
 		comandoVai = new ComandoVai(io);
 		Labirinto bilocale = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
 			/*.addStanzaIniziale("camera")

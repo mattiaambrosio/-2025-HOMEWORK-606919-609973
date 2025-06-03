@@ -1,4 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import it.uniroma3.diadia.IO;
@@ -19,15 +23,18 @@ class ComandoPrendiTest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		io = new IOConsole();
+		String input = "bibbia";
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(input .getBytes());
+        Scanner scanner = new Scanner(inputStream);
+		io = new IOConsole(scanner);
 		comandoPrendi = new ComandoPrendi(io);
-		Labirinto bilocale = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
+		Labirinto lab = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
 			/*.addStanzaIniziale("camera")
 			.addAttrezzo("bibbia",10)// dove? fa riferimento all�ultima stanza aggiunta: la �camera�
 			.addStanzaVincente("vesuvio")
 			.addAdiacenza("camera","vesuvio" ,"sud") // camera si trova a nord di vesuvio
 			.getLabirinto(); // restituisce il Labirinto cos� specificato*/
-		partita = new Partita(bilocale);
+		partita = new Partita(lab);
 		attrezzo = new Attrezzo("bibbia", 2);
 	}
 

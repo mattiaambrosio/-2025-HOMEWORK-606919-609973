@@ -7,11 +7,10 @@ import it.uniroma3.diadia.ambienti.Labirinto;
 public class PartitaTest {
 	
 	private Partita partita;
-	private Labirinto labirinto;
 	
 	@BeforeEach
-	public void setUp() {
-		partita = new Partita(labirinto);
+	public void setUp() throws Exception{
+		partita = new Partita(Labirinto.newBuilder("napoliLab.txt").getLabirinto());
 	}
 
 	@Test

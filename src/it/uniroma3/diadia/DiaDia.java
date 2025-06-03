@@ -58,7 +58,7 @@ public class DiaDia {
 			istruzione = this.io.leggiRiga();
 		while (!processaIstruzione(istruzione));
 	}
-	
+
 	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandiRiflessiva factory = new FabbricaDiComandiRiflessiva(this.io);
@@ -77,7 +77,7 @@ public class DiaDia {
 		return this.partita.isFinita();
 	}
 
-/*	private boolean processaIstruzione(String istruzione) throws Exception {
+	/*	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(ioconsole);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
@@ -94,12 +94,12 @@ public class DiaDia {
 	}*/
 
 	public static void main(String[] argc) throws Exception {
-		Scanner scanner = new Scanner(System.in);
-		IO io = new IOConsole();
-		//Attrezzo pallone = new Attrezzo("pallone", 5);
-		//Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
-		Labirinto labirinto = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
-				/*.addStanzaIniziale("Angri")
+		try(Scanner scanner = new Scanner(System.in)){
+			IO io = new IOConsole(scanner);
+			//Attrezzo pallone = new Attrezzo("pallone", 5);
+			//Attrezzo ossomordicchiato = new Attrezzo("osso-mordicchiato", 1);
+			Labirinto labirinto = Labirinto.newBuilder("napoliLab.txt").getLabirinto();
+			/*.addStanzaIniziale("Angri")
 				.addAttrezzo("stelle-filanti",4)
 				.addCane("Pluto", "BAU BAU", ossomordicchiato, "pastiera")
 				.addStanzaVincente("Vesuvio")
@@ -124,9 +124,9 @@ public class DiaDia {
 				.addAdiacenza("Scampia","Angri","ovest")
 				.addAdiacenza("Vesuvio","Scampia","ovest")
 				.getLabirinto();*/
-		DiaDia gioco = new DiaDia(io, labirinto);
-		gioco.gioca();
-		scanner.close();
+			DiaDia gioco = new DiaDia(io, labirinto);
+			gioco.gioca();
+		}
 
 	}
 
